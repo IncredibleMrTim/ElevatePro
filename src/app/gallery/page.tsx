@@ -2,11 +2,10 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import img1 from "@/assets/img1.jpeg"
-import img2 from "@/assets/img2_1x_webp"
-import img3 from "@/assets/img3_1x_webp"
+import img1 from "@/assets/img1_1x.webp"
+import img2 from "@/assets/img2_1x.webp"
+import img3 from "@/assets/img3_1x.webp"
 import droneImg from "@/assets/drone_1x.webp"
-import mavicImg from "@/assets/WhatsApp_Image_2026-08-19_at_19.21.26.jpeg"
 
 const photos = [
   {
@@ -36,13 +35,6 @@ const photos = [
     category: "Equipment",
     title: "Professional Fleet",
     desc: "Our professional-grade drone fleet, capable of operation in varied conditions and environments.",
-  },
-  {
-    src: mavicImg,
-    alt: "DJI Mavic Mini drone in flight against clear blue sky",
-    category: "Equipment",
-    title: "DJI Mavic Mini Operations",
-    desc: "The DJI Mavic Mini — compact, precise, and capable of 4K imagery in tight spaces.",
   },
 ]
 
