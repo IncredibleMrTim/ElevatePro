@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap');
+@import 'tailwindcss';
+
+@theme inline {
+  --color-background: #080f1e;
+  --color-foreground: #e8eef8;
+  --color-card: #0e1a2e;
+  --color-card-foreground: #e8eef8;
+  --color-primary: #1a3875;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #111f38;
+  --color-secondary-foreground: #a8bcd8;
+  --color-muted: #0e1a2e;
+  --color-muted-foreground: #7a90b0;
+  --color-accent: #c9a227;
+  --color-accent-foreground: #080f1e;
+  --color-border: #1e3358;
+  --color-ring: #c9a227;
+  --radius: 0.25rem;
+}
+
+:root {
+  --background: #080f1e;
+  --foreground: #e8eef8;
+  --card: #0e1a2e;
+  --card-foreground: #e8eef8;
+  --primary: #1a3875;
+  --primary-foreground: #ffffff;
+  --secondary: #111f38;
+  --secondary-foreground: #a8bcd8;
+  --muted: #0e1a2e;
+  --muted-foreground: #7a90b0;
+  --accent: #c9a227;
+  --accent-foreground: #080f1e;
+  --border: #1e3358;
+  --ring: #c9a227;
+  --radius: 0.25rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #080f1e;
+  color: #e8eef8;
+  font-family: 'Barlow', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #080f1e;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a3875;
+  border-radius: 2px;
+}
+
+.font-display {
+  font-family: 'Barlow Condensed', sans-serif;
+}
+
+.font-mono-label {
+  font-family: 'Space Mono', monospace;
+}
+
+.gold-line {
+  display: inline-block;
+  width: 3rem;
+  height: 2px;
+  background: #c9a227;
+  vertical-align: middle;
+  margin-right: 0.75rem;
+}
+
+.section-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #c9a227;
+}
