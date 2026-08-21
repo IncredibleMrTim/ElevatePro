@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #080f1e;
+  --color-foreground: #e8eef8;
+  --color-surface: #0b1220;
+  --color-surface-deep: #050b14;
+  --color-card: #0e1a2e;
+  --color-card-foreground: #e8eef8;
+  --color-primary: #1a3875;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #111f38;
+  --color-secondary-foreground: #a8bcd8;
+  --color-muted: #0e1a2e;
+  --color-muted-foreground: #7a90b0;
+  --color-accent: #c9a227;
+  --color-accent-hover: #e0b82e;
+  --color-accent-foreground: #080f1e;
+  --color-border: #1e3358;
+  --color-ring: #c9a227;
+
+  --font-sans: var(--font-barlow);
+  --font-display: var(--font-barlow-condensed);
+  --font-mono-label: var(--font-space-mono);
+
+  --text-hero: clamp(3rem, 8vw, 7rem);
+  --text-hero--line-height: 1;
+  --text-page-title: clamp(2.5rem, 6vw, 5rem);
+  --text-page-title--line-height: 1;
+
+  --radius-DEFAULT: 0.25rem;
+
+  --drop-shadow-glow: 0 0 8px rgba(201, 162, 39, 0.4);
+  --text-shadow-glow: 0 0 60px rgba(201, 162, 39, 0.15);
+}
+
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(var(--color-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.max-h-lightbox {
+  max-height: 75vh;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 2px;
+}
