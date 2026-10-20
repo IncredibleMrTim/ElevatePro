@@ -1,6 +1,11 @@
 import Link from "next/link"
 import Image from "next/image"
 import logoImg from "@/assets/logo_1x.webp"
+import { sanityFetch } from "@/sanity/live"
+import { siteSettingsQuery } from "@/sanity/queries"
+
+// Shown until a Site Settings document with a title is published in Sanity
+const DEFAULT_SITE_TITLE = "ElevatePro Surveys Ltd."
 
 const serviceLinks = [
   { label: "Roof & Building Surveys", to: "/services" },
@@ -9,7 +14,10 @@ const serviceLinks = [
   { label: "Commercial Aerial Photography", to: "/services" },
 ]
 
-export function Footer() {
+export async function Footer() {
+  const { data: siteSettings } = await sanityFetch({ query: siteSettingsQuery })
+  const siteTitle = siteSettings?.siteTitle ?? DEFAULT_SITE_TITLE
+
   return (
     <footer className="border-t border-border bg-surface-deep">
       <div className="max-w-7xl mx-auto px-6 py-12">
@@ -81,7 +89,7 @@ export function Footer() {
 
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-border">
           <div className="font-mono-label text-xs text-muted-foreground">
-            © 2026 ElevatePro Surveys Ltd. All rights reserved.
+            © 2026 {siteTitle} All rights reserved.
           </div>
           <div className="font-mono-label text-xs text-muted-foreground">
             CAA Registration · Commercial Liability Insured · UK Operations
