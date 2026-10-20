@@ -10,9 +10,13 @@ Not running automatically. Start it with `pnpm dev` (Next.js on `http://localhos
 
 This is the canonical project structure. Start with task-relevant files below. Only follow imports or inspect other files when required, when a documented path is missing, or when the repository contradicts this guide.
 
-- `src/app/layout.tsx` - Root layout; loads fonts via `next/font/google`, sets metadata, wraps every page in `Nav` and `Footer`
-- `src/app/page.tsx` - Home page (`/`)
-- `src/app/services/page.tsx`, `compliance/page.tsx`, `sectors/page.tsx`, `gallery/page.tsx`, `contact/page.tsx` - one route each, matching the top-level nav
+- `src/app/layout.tsx` - Root layout; loads fonts via `next/font/google` and sets metadata only
+- `src/app/(site)/layout.tsx` - Wraps every public page in `Nav` and `Footer`
+- `src/app/(site)/page.tsx` - Home page (`/`)
+- `src/app/(site)/services/page.tsx`, `compliance/page.tsx`, `sectors/page.tsx`, `gallery/page.tsx`, `contact/page.tsx` - one route each, matching the top-level nav
+- `src/app/(admin)/admin/[[...tool]]/` - Embedded Sanity Studio at `/admin`, outside the `(site)` group so it has no Nav or Footer; `admin-branding.css` holds the login screen branding
+- `sanity.config.ts`, `sanity.cli.ts` - Sanity Studio and CLI config (Google and Sanity email sign-in only)
+- `src/sanity/` - `env.ts` (required env vars), `client.ts`, `image.ts`, `queries.ts` (GROQ via `defineQuery`), `structure.ts` (desk structure), `schemaTypes/`, `types.ts` (generated, do not edit)
 - `src/app/globals.css` - Tailwind v4 import, `@theme` color/font/text-size tokens, and small custom utilities (`.bg-grid-pattern`, `.max-h-lightbox`) for effects that don't fit a first-class Tailwind utility
 - `src/components/Nav.tsx` - Client component (scroll state, mobile menu, active-route highlighting via `usePathname`)
 - `src/components/Footer.tsx` - Server component
@@ -27,6 +31,7 @@ This is the canonical project structure. Start with task-relevant files below. O
 - Styling: Tailwind CSS v4 via `@tailwindcss/postcss`
 - Formatting: oxfmt
 - Linting: ESLint 9 with `eslint-config-next`
+- CMS: Sanity (`sanity` 6.20, `next-sanity`), Studio at `/admin`. Project ID `mvirciat`; local dev uses the `development` dataset. Set `NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET` and `NEXT_PUBLIC_SANITY_API_VERSION` in `.env.local`. Run `pnpm typegen` after changing a schema type or query. The Studio's origin must be on the project's CORS list (`sanity cors add <origin> --credentials`).
 
 ## Styling
 
@@ -45,7 +50,7 @@ Fonts (Barlow, Barlow Condensed, Space Mono) are loaded once in `src/app/layout.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
-# This is NOT the Next.js you know
+## This is NOT the Next.js you know
 
 This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
 
