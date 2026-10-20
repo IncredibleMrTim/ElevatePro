@@ -1,5 +1,6 @@
 import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
+import { presentationTool } from "sanity/presentation";
 import { structureTool } from "sanity/structure";
 
 import { apiVersion, dataset, projectId } from "./src/sanity/env";
@@ -14,6 +15,11 @@ export default defineConfig({
   schema,
   plugins: [
     structureTool({ structure }),
+    // Previews the public site with live drafts. The enable route needs
+    // SANITY_API_READ_TOKEN to be set on the server.
+    presentationTool({
+      previewUrl: { previewMode: { enable: "/api/draft-mode/enable" } },
+    }),
     visionTool({ defaultApiVersion: apiVersion }),
   ],
   // Google as the primary sign-in, with Sanity's own email/password as a
