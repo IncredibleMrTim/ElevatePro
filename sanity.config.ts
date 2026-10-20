@@ -1,3 +1,4 @@
+import { colorInput } from "@sanity/color-input";
 import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
 import { presentationTool } from "sanity/presentation";
@@ -15,6 +16,8 @@ export default defineConfig({
   schema,
   plugins: [
     structureTool({ structure }),
+    // Adds the `color` field type used by the portable text colour picker.
+    colorInput(),
     // Previews the public site with live drafts. The enable route needs
     // SANITY_API_READ_TOKEN to be set on the server.
     presentationTool({
