@@ -11,4 +11,9 @@ export const structure: StructureResolver = (S) =>
         .child(
           S.document().schemaType("siteSettings").documentId("siteSettings"),
         ),
+      S.listItem()
+        .title("Custom Colors")
+        .child(
+          S.document().schemaType("colorPalette").documentId("colorPalette"),
+        ),
     ]);
