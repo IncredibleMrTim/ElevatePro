@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Barlow, Barlow_Condensed, Space_Mono } from "next/font/google";
-import { Nav } from "@/components/Nav";
-import { Footer } from "@/components/Footer";
 import "./globals.css";
 
 const barlow = Barlow({
@@ -38,9 +36,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${barlow.variable} ${barlowCondensed.variable} ${spaceMono.variable}`}
     >
       <body className="min-h-screen bg-background font-sans text-foreground">
-        <Nav />
-        <main>{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   );
