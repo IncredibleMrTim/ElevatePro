@@ -16,7 +16,8 @@ This is the canonical project structure. Start with task-relevant files below. O
 - `src/app/(site)/services/page.tsx`, `compliance/page.tsx`, `sectors/page.tsx`, `gallery/page.tsx`, `contact/page.tsx` - one route each, matching the top-level nav
 - `src/app/(admin)/admin/[[...tool]]/` - Embedded Sanity Studio at `/admin`, outside the `(site)` group so it has no Nav or Footer; `admin-branding.css` holds the login screen branding
 - `sanity.config.ts`, `sanity.cli.ts` - Sanity Studio and CLI config (Google and Sanity email sign-in only)
-- `src/sanity/` - `env.ts` (required env vars), `client.ts`, `image.ts`, `queries.ts` (GROQ via `defineQuery`), `structure.ts` (desk structure), `schemaTypes/`, `types.ts` (generated, do not edit)
+- `src/app/api/draft-mode/enable/route.ts` - Called by the Studio's Presentation tool to turn on draft mode
+- `src/sanity/` - `live.ts` (`sanityFetch` and `<SanityLive />`), `env.ts` (required env vars), `client.ts`, `image.ts`, `queries.ts` (GROQ via `defineQuery`), `structure.ts` (desk structure), `schemaTypes/`, `types.ts` (generated, do not edit)
 - `src/app/globals.css` - Tailwind v4 import, `@theme` color/font/text-size tokens, and small custom utilities (`.bg-grid-pattern`, `.max-h-lightbox`) for effects that don't fit a first-class Tailwind utility
 - `src/components/Nav.tsx` - Client component (scroll state, mobile menu, active-route highlighting via `usePathname`)
 - `src/components/Footer.tsx` - Server component
@@ -31,7 +32,7 @@ This is the canonical project structure. Start with task-relevant files below. O
 - Styling: Tailwind CSS v4 via `@tailwindcss/postcss`
 - Formatting: oxfmt
 - Linting: ESLint 9 with `eslint-config-next`
-- CMS: Sanity (`sanity` 6.20, `next-sanity`), Studio at `/admin`. Project ID `mvirciat`; local dev uses the `development` dataset. Set `NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET` and `NEXT_PUBLIC_SANITY_API_VERSION` in `.env.local`. Run `pnpm typegen` after changing a schema type or query. The Studio's origin must be on the project's CORS list (`sanity cors add <origin> --credentials`).
+- CMS: Sanity (`sanity` 6.20, `next-sanity`), Studio at `/admin`. Project ID `mvirciat`; local dev uses the `development` dataset. Set `NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET` and `NEXT_PUBLIC_SANITY_API_VERSION` in `.env.local`. Run `pnpm typegen` after changing a schema type or query. Live content: fetch with `sanityFetch` from `src/sanity/live.ts`, not `client.fetch`, so published changes appear within seconds with no rebuild; `<SanityLive />` sits in the `(site)` layout. Previewing drafts in the Studio's Presentation tool needs `SANITY_API_READ_TOKEN` (a Viewer token, server only, never `NEXT_PUBLIC_`, set in `.env.local` and Vercel). The Studio's origin must be on the project's CORS list (`sanity cors add <origin> --credentials`).
 
 ## Styling
 
